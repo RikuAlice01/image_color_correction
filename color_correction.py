@@ -25,10 +25,9 @@ from PIL import Image
 def find_color_card(image):
     # load the ArUCo dictionary, grab the ArUCo parameters, and
     # detect the markers in the input image
-    arucoDict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_ARUCO_ORIGINAL)
-    arucoParams = cv2.aruco.DetectorParameters_create()
-    (corners, ids, rejected) = cv2.aruco.detectMarkers(image,
-                                                       arucoDict, parameters=arucoParams)
+    arucoDict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_ARUCO_ORIGINAL)
+    arucoParams = cv2.aruco.DetectorParameters()
+    (corners, ids, rejected) = cv2.aruco.detectMarkers(image, arucoDict, parameters=arucoParams)
 
     # try to extract the coordinates of the color correction card
     try:
